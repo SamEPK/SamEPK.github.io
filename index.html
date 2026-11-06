@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samuel Atlani · Développeur web fullstack</title>
+<meta name="description" content="Samuel Atlani, développeur web fullstack junior en Île-de-France. Portfolio jouable : projets, expérience et compétences.">
+<meta property="og:title" content="Samuel Atlani · Développeur web fullstack">
+<meta property="og:description" content="Portfolio jouable : avance dans le niveau et ouvre les portails pour découvrir mes projets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<section class="game" id="game" aria-label="Portfolio jouable : avance avec les flèches, ouvre les portails pour voir les projets">
+  <canvas id="cv"></canvas>
+
+  <div class="hud">
+    <div class="count" aria-live="polite"><i></i><span>Compétences <b id="got">0</b> / <span id="tot">0</span></span></div>
+    <div class="map" id="map" aria-hidden="true"><span id="dot"></span></div>
+    <a class="skip" href="#lecture">Version texte</a>
+  </div>
+
+  <button class="prompt" id="prompt" type="button" hidden><span class="key kbd">E</span><span id="ptxt">Ouvrir</span></button>
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <div class="help" id="help">
+    <span><span class="key">←</span><span class="key">→</span> ou <span class="key">Q</span><span class="key">D</span> Avancer</span>
+    <span><span class="key">Espace</span> Sauter</span>
+    <span><span class="key">E</span> Ouvrir un portail</span>
+  </div>
+  <div class="pad l"><button id="bl" type="button" aria-label="Aller à gauche">◀</button><button id="br" type="button" aria-label="Aller à droite">▶</button></div>
+  <div class="pad r"><button id="bj" type="button" aria-label="Sauter">⤒</button></div>
+
+  <div class="card" id="card" hidden role="dialog" aria-modal="true" aria-labelledby="ctitle">
+    <article id="cbody"></article>
+  </div>
+
+  <div class="intro" id="intro">
+    <h1 id="logo" aria-label="Samuel Atlani"></h1>
+    <p class="sub">Développeur web fullstack</p>
+    <button class="go" id="go" type="button"><span class="key kbd">Entrée</span><span class="blink"><span class="kbd">Appuie pour jouer</span><span class="touch">Touche pour jouer</span></span></button>
+  </div>
+</section>
+
+<main class="read" id="lecture">
+  <div class="wrap">
+    <section aria-labelledby="h-about">
+      <div class="shead"><i></i><h2 id="h-about">Le héros</h2><hr><small>Samuel Atlani</small></div>
+      <div class="about">
+        <div>
+          <p class="big">Développeur fullstack JavaScript / TypeScript, <b>du front au back, de la base de données au déploiement.</b></p>
+          <p>Trois ans d'alternance en entreprise, dont deux au service digital du Groupe Astek, et une dizaine de projets, la plupart en équipe. Diplômé d'un Mastère Ingénierie du Web à l'ESGI. Habitué au développement assisté par IA.</p>
+        </div>
+        <ul class="stats">
+          <li class="ok"><span>Statut</span><b>Disponible immédiatement</b></li>
+          <li><span>Contrat</span><b>CDI ou CDD</b></li>
+          <li><span>Zone</span><b>Île-de-France</b></li>
+          <li><span>Langues</span><b>Français, anglais B2</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="h-exp">
+      <div class="shead"><i></i><h2 id="h-exp">Expérience</h2><hr><small>3 ans en entreprise</small></div>
+      <ol class="road">
+        <li><span class="plate">2024 – 2026</span><div><h3>Développeur web en alternance · Groupe Astek</h3><div class="sub">Service digital · La Défense</div><p>Maintenance et évolution d'un parc de 26 sites WordPress à fort trafic. Fusion de 24 sites pays en une plateforme unique, astek.net, déployée en 6 langues. Création d'EchoLog, un outil interne qui automatise le suivi des plugins sur tout le parc. Maquettes Figma et support utilisateurs, en lien avec le marketing et la communication.</p></div></li>
+        <li><span class="plate">2022 – 2023</span><div><h3>Technicien développeur en alternance · FIA</h3><div class="sub">Paris</div><p>Scripts d'automatisation en JavaScript et Bash, gestion des écrans dynamiques et de la diffusion de contenu, support technique.</p></div></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="h-proj">
+      <div class="shead"><i></i><h2 id="h-proj">Portails</h2><hr><small id="pcount"></small></div>
+      <ul class="plist" id="plist"></ul>
+    </section>
+
+    <section aria-labelledby="h-edu">
+      <div class="shead"><i></i><h2 id="h-edu">Formation</h2><hr><small>Bac+5</small></div>
+      <ul class="edu">
+        <li><b>Mastère Ingénierie du Web</b><span>ESGI Paris · 2024 – 2026</span></li>
+        <li><b>Bachelor Architecture des Logiciels</b><span>ESGI Paris · 2022 – 2023</span></li>
+        <li><b>BTS SIO, option SLAM</b><span>ITIC Paris · 2020 – 2022</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="h-skills">
+      <div class="shead"><i></i><h2 id="h-skills">Inventaire</h2><hr><small id="icount"></small></div>
+      <div class="inv" id="skills"></div>
+    </section>
+
+    <section aria-labelledby="h-contact" id="contact" class="flag">
+      <h2 id="h-contact">Me recruter</h2>
+      <p class="lead">Disponible immédiatement, pour un CDI ou un CDD en Île-de-France.</p>
+      <div class="mail"><span id="email">samuel.atlani1@gmail.com</span><button class="btn" id="copy" type="button">Copier l'adresse</button></div>
+      <div class="links"><a href="https://www.linkedin.com/in/samuel-atlani-118638210">LinkedIn</a><a href="https://github.com/SamEPK">GitHub</a></div>
+    </section>
+  </div>
+</main>
+<footer><div class="wrap"><span>Samuel Atlani, 2026</span><a href="#game">Revenir au jeu</a></div></footer>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
