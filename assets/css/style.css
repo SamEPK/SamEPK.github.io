@@ -175,3 +175,10 @@ button{font:inherit;color:inherit}
 footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line);color:var(--ash);font-family:var(--hud);font-size:15px;letter-spacing:.04em;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--ash)}
 @media (max-width:560px){.road li > div{padding-left:26px}}
+/* Name in HUD */
+.who{display:flex;flex-direction:column;line-height:1.05;min-width:0}
+.who b{font-family:var(--display);font-weight:900;font-size:22px;text-transform:uppercase;letter-spacing:.02em;color:var(--bone);white-space:nowrap}
+.who span{font-size:13px;color:var(--gold);letter-spacing:.06em;white-space:nowrap}
+.hud .left{display:flex;align-items:center;gap:20px;min-width:0}
+@media (max-width:640px){.who span{display:none}.count > span > span.lbl{display:none}.hud{flex-wrap:wrap;row-gap:10px}.hud .left{gap:12px;flex:1 1 auto}.who b{font-size:19px}.map{order:3;flex-basis:100%;max-width:none}}
+.count,.skip{white-space:nowrap}
