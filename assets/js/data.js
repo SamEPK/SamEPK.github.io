@@ -1,0 +1,17 @@
+/* Contenu du portfolio : projets et compétences */
+(function(){
+"use strict";
+var P=[
+ {n:'astek.net',k:'En entreprise',t:'Groupe Astek',d:"La fusion de 24 sites pays du groupe en une seule plateforme, déployée en 6 langues.",o:["Centralisation des contenus","Architecture du site","Harmonisation de l'image de marque"],s:["WordPress","Divi","CSS","JavaScript"],l:"https://astek.net"},
+ {n:'EchoLog',k:'En entreprise',t:'Outil interne Astek',d:"Un outil que j'ai proposé et développé seul pour suivre automatiquement les versions des plugins sur les 26 sites du groupe, à la place d'un contrôle manuel site par site.",o:["Suivi centralisé des plugins","Gain de temps sur la maintenance"],s:["PHP","SQLite","JavaScript"]},
+ {n:'MaVoiture',k:'En équipe',t:'Projet annuel',d:"Une marketplace de location de voitures qui met en relation des agences et des particuliers, sur le web et sur mobile.",o:["Recherche et comparaison de véhicules","Réservation par aéroport ou par ville","Paiement en ligne avec Stripe","Chat en temps réel et avis","Espaces client, agence et administrateur"],s:["Python / Flask","PostgreSQL","Redis","Socket.IO","Stripe","React Native"]},
+ {n:'SkillSwap',k:'En équipe',t:'Projet de 4e année',d:"Une plateforme sociale pour échanger ses compétences avec d'autres utilisateurs.",o:["Profils et compétences","Prise de rendez-vous","Messagerie en temps réel","Notifications, likes et commentaires","Notes entre utilisateurs"],s:["Vue.js","Express","Sequelize","Socket.io","Stripe"]},
+ {n:'MatchRoom',k:'En équipe',t:'Réservation hôtelière',d:"Une application où voyageurs et hôtels « matchent », puis négocient le prix d'une chambre.",o:["Fil de chambres à liker","Négociation entre voyageur et hôtel","Espace hôtel : chambres et services","Réservations"],s:["React","Express","Docker"]},
+ {n:'ArchiClean',k:'En équipe',t:'Banque Avenir',d:"Une application bancaire et d'investissement, construite en Clean Architecture et selon les principes SOLID.",o:["Back-end NestJS découpé en couches","Front-end Next.js","Comptes et investissements"],s:["TypeScript","NestJS","Next.js"],r:"https://github.com/SamEPK/ArchiClean"},
+ {n:'BarterSwap',k:'En équipe',t:'API REST',d:"Une API d'échange de compétences sans argent, sur le principe d'une banque de temps : une heure de service rendue donne droit à une heure reçue.",o:["API REST complète","Système de crédit-temps","Base SQL"],s:["Go","SQL","REST"],r:"https://github.com/SamEPK/BarterSwap"},
+ {n:'EcoMarket',k:'En équipe',t:'E-commerce',d:"Une boutique en ligne de produits artisanaux et écologiques, pour découvrir, rechercher et acheter auprès d'artisans locaux.",o:["Catalogue et recherche","Achat en ligne","Interface en Vue.js"],s:["Vue.js","TypeScript","Vite"],r:"https://github.com/SamEPK/EcoMarket"},
+ {n:'Cluster',k:'En solo',t:'DevOps',d:"Le déploiement d'une application sur un cluster Kubernetes, avec charts Helm et intégration continue.",o:["Cluster k3s","Charts Helm","Pipeline GitHub Actions"],s:["Kubernetes","Helm","Docker","GitHub Actions"],r:"https://github.com/SamEPK/Cluster"}
+];
+var SK={"Front-end":["React","Vue.js","Next.js","TypeScript","JavaScript","HTML / CSS","React Native"],"Back-end":["Node.js","Express","NestJS","PHP","Python","Go","Socket.io"],"Données et déploiement":["PostgreSQL","MariaDB","Redis","Docker","Kubernetes","GitHub Actions"],"CMS et design":["WordPress","Figma"]};
+window.PORTFOLIO={projects:P,skills:SK};
+})();
