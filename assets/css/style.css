@@ -174,3 +174,4 @@ button{font:inherit;color:inherit}
 .links{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--hud);font-size:18px;letter-spacing:.03em}
 footer .wrap{padding-block:20px 32px;border-top:1px solid var(--line);color:var(--ash);font-family:var(--hud);font-size:15px;letter-spacing:.04em;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--ash)}
+@media (max-width:560px){.road li > div{padding-left:26px}}
