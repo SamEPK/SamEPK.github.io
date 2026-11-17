@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation: Filter Grid for Divi 5</title>
+<meta name="description" content="How to install and set up the Filter Grid for Divi 5 module: every setting, filtered URLs and developer hooks.">
+<meta property="og:title" content="Documentation: Filter Grid for Divi 5">
+<meta property="og:description" content="How to install and set up the Filter Grid for Divi 5 module: every setting, filtered URLs and developer hooks.">
+<meta property="og:image" content="https://samepk.fr/filter-grid/assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='4' y='5' width='6' height='3' rx='1.5' fill='%23ef476f'/%3E%3Crect x='11' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='18' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='4' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='4' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/site.css">
+
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="../"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='4' y='5' width='6' height='3' rx='1.5' fill='%23ef476f'/%3E%3Crect x='11' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='18' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='4' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='4' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E" alt="">Filter Grid for Divi 5</a><nav aria-label="Main"><a href="../">Overview</a><a href="../demo/">Live demo</a><a href="../docs/" aria-current="page">Documentation</a></nav></div></header>
+
+<div class="wrap docs">
+<nav class="toc" aria-label="On this page">
+  <a href="#requirements">Requirements</a><a href="#install">Installation</a><a href="#add">Add the module</a>
+  <a href="#content">Content settings</a><a class="sub" href="#content-source">Source</a><a class="sub" href="#content-filters">Filters</a><a class="sub" href="#content-search">Search</a><a class="sub" href="#content-elements">Elements</a><a class="sub" href="#content-pagination">Pagination</a>
+  <a href="#design">Design settings</a><a href="#advanced">Advanced settings</a><a href="#urls">Filtered URLs</a>
+  <a href="#performance">Performance and caching</a><a href="#accessibility">Accessibility</a><a href="#developers">For developers</a>
+  <a href="#faq">FAQ</a><a href="#changelog">Changelog</a><a href="#support">Support</a>
+</nav>
+<article class="doc">
+<h1>Documentation</h1>
+<p>Filter Grid for Divi 5 adds one module to the Divi 5 builder: a grid of posts, pages or custom post types that visitors filter, search and paginate without reloading the page. This guide covers installation, every setting and the hooks available to developers.</p>
+
+<h2 id="requirements">Requirements</h2>
+<table><thead><tr><th>Software</th><th>Version</th></tr></thead><tbody>
+<tr><td>Divi</td><td>Divi 5, as the theme or the Divi Builder plugin</td></tr>
+<tr><td>WordPress</td><td>6.5 or later (tested up to 7.1)</td></tr>
+<tr><td>PHP</td><td>7.4 or later (tested up to 8.3)</td></tr></tbody></table>
+<p>The module is built for the Divi 5 API only. It does not run with Divi 4.</p>
+
+<h2 id="install">Installation</h2>
+<ol class="steps">
+<li>Download the plugin zip file from your Divi Marketplace account.</li>
+<li>In WordPress, go to <b>Plugins &rarr; Add New Plugin &rarr; Upload Plugin</b>, choose the zip file and click <b>Install Now</b>.</li>
+<li>Click <b>Activate</b>.</li>
+</ol>
+<p>Updates are delivered through the Divi Marketplace, in your WordPress dashboard, like other Divi products. If Divi 5 is not active, the plugin shows a notice and the module stays hidden until it is.</p>
+
+<h2 id="add">Add the module to a page</h2>
+<ol class="steps">
+<li>Open a page with the Divi 5 builder.</li>
+<li>Click the <b>+</b> button in a column and search for <b>Filter Grid</b>.</li>
+<li>In <b>Content &rarr; Source</b>, choose the post type to show.</li>
+<li>In <b>Content &rarr; Filters</b>, tick the taxonomies visitors can filter by.</li>
+<li>Choose a pagination style, adjust the design, then save the page.</li>
+</ol>
+<p>The preview in the builder is rendered by the same code as the live page, so what you see is what visitors get. The module also works inside Divi Theme Builder templates.</p>
+
+<h2 id="content">Content settings</h2>
+<p>The Content tab sets what the grid shows and how visitors interact with it.</p>
+<h3 id="content-source">Source</h3><table><thead><tr><th>Setting</th><th>What it does</th><th>Choices</th></tr></thead><tbody><tr><td>Post Type</td><td>Choose which content to show in the grid.</td><td>Every public post type of your site</td></tr><tr><td>Items Per Page</td><td>Number of items shown per page (1 to 100).</td><td>&ndash;</td></tr><tr><td>Order By</td><td>Choose how the items are sorted.</td><td>Date, Title, Menu order, Custom field (text), Custom field (number)</td></tr><tr><td>Order</td><td>Choose the sort direction.</td><td>Descending, Ascending</td></tr><tr><td>Custom Field Key</td><td>Meta key used when ordering by a custom field.</td><td>&ndash;</td></tr><tr><td>Exclude IDs</td><td>Comma-separated list of post IDs to leave out.</td><td>&ndash;</td></tr><tr><td>Exclude Current Post</td><td>Leave out the post or page this grid is displayed on.</td><td>&ndash;</td></tr></tbody></table><h3 id="content-filters">Filters</h3><table><thead><tr><th>Setting</th><th>What it does</th><th>Choices</th></tr></thead><tbody><tr><td>Show Filters</td><td>Let visitors filter the grid by taxonomy terms.</td><td>&ndash;</td></tr><tr><td>Taxonomies</td><td>One filter group is shown per selected taxonomy. Taxonomies that do not belong to the chosen post type are ignored.</td><td>Every public taxonomy of those post types</td></tr><tr><td>Filter Style</td><td>Show the terms as buttons or in a dropdown. A dropdown always selects a single term.</td><td>Buttons, Dropdown</td></tr><tr><td>Show &quot;All&quot; Option</td><td>Add an option that clears the filter.</td><td>&ndash;</td></tr><tr><td>&quot;All&quot; Label</td><td>Leave empty to use the default translated label.</td><td>&ndash;</td></tr><tr><td>Multiple Selection</td><td>Let visitors select several terms at once (buttons only).</td><td>&ndash;</td></tr><tr><td>Multiple Selection Logic</td><td>OR shows items matching any selected term. AND shows items matching all of them.</td><td>OR (any term), AND (all terms)</td></tr></tbody></table><h3 id="content-search">Search</h3><table><thead><tr><th>Setting</th><th>What it does</th><th>Choices</th></tr></thead><tbody><tr><td>Show Search Field</td><td>Let visitors search the grid by keyword.</td><td>&ndash;</td></tr><tr><td>Placeholder</td><td>Leave empty to use the default translated placeholder.</td><td>&ndash;</td></tr></tbody></table><h3 id="content-elements">Elements</h3><table><thead><tr><th>Setting</th><th>What it does</th><th>Choices</th></tr></thead><tbody><tr><td>Show Featured Image</td><td>Show the featured image of each item.</td><td>&ndash;</td></tr><tr><td>Image Size</td><td>Registered image size used for the featured image.</td><td>Thumbnail, Medium, Medium large, Large, Full size</td></tr><tr><td>Show Title</td><td>Show the title of each item.</td><td>&ndash;</td></tr><tr><td>Show Date</td><td>Show the publication date.</td><td>&ndash;</td></tr><tr><td>Show Categories</td><td>Show the terms of the first filter taxonomy.</td><td>&ndash;</td></tr><tr><td>Show Excerpt</td><td>Show an excerpt of each item.</td><td>&ndash;</td></tr><tr><td>Excerpt Length</td><td>Maximum number of words in the excerpt.</td><td>&ndash;</td></tr><tr><td>Show Read More Button</td><td>Show a link to each item.</td><td>&ndash;</td></tr><tr><td>Read More Text</td><td>Leave empty to use the default translated text.</td><td>&ndash;</td></tr></tbody></table><h3 id="content-pagination">Pagination</h3><table><thead><tr><th>Setting</th><th>What it does</th><th>Choices</th></tr></thead><tbody><tr><td>Pagination</td><td>Choose how visitors reach the next items.</td><td>Page numbers, &quot;Load more&quot; button, Infinite scroll, None</td></tr><tr><td>&quot;Load More&quot; Text</td><td>Leave empty to use the default translated text.</td><td>&ndash;</td></tr></tbody></table>
+<div class="callout"><b>Text fields left empty</b> use the default label, translated in the language of your site (English and French are included).</div>
+
+<h2 id="design">Design settings</h2>
+<p>The Design tab uses the native Divi 5 controls, with hover states and per-device values where Divi offers them.</p>
+<table><thead><tr><th>Group</th><th>What you can style</th></tr></thead><tbody><tr><td>Grid</td><td>Number of columns and gap between cards, set per device (desktop, tablet, phone).</td></tr><tr><td>Filters</td><td>Text, background, border and spacing of the filter buttons and dropdown.</td></tr><tr><td>Active Filter</td><td>Text, background and border of the selected filter.</td></tr><tr><td>Search Field</td><td>Text, background, border and spacing of the search field.</td></tr><tr><td>Card</td><td>Background colour, border, spacing and box shadow of each card.</td></tr><tr><td>Card Content</td><td>Inner spacing of the text part of the card, so the image can stay edge to edge.</td></tr><tr><td>Image</td><td>Border (rounded corners) and box shadow of the featured image.</td></tr><tr><td>Read More</td><td>Text, background, border and spacing of the &quot;Read more&quot; link.</td></tr><tr><td>Pagination</td><td>Text, background, border and spacing of page numbers and of the &quot;Load more&quot; button, plus the current page.</td></tr></tbody></table>
+<p>The module also has the usual Divi groups for the whole module: sizing, spacing, border, box shadow, filters, transform and animation.</p>
+
+<h2 id="advanced">Advanced settings</h2>
+<p>The Advanced tab has the standard Divi options (CSS ID and classes, visibility, position, scroll effects) and custom CSS fields for each part of the grid: filters, filter, active filter, search field, grid, card, card content, image, title, meta, excerpt, read more and pagination.</p>
+
+<h2 id="urls">Filtered URLs</h2>
+<p>When a visitor filters or searches, the address in the browser changes, so a filtered view can be bookmarked or shared, and the back button returns to the previous view.</p>
+<table><thead><tr><th>Parameter</th><th>Meaning</th><th>Example</th></tr></thead><tbody>
+<tr><td><code>d5fg_&lt;taxonomy&gt;</code></td><td>Selected terms of a taxonomy, by slug, comma-separated</td><td><code>?d5fg_category=news,events</code></td></tr>
+<tr><td><code>d5fg_s</code></td><td>Search words</td><td><code>?d5fg_s=coffee</code></td></tr>
+<tr><td><code>d5fg_page</code></td><td>Page number (page numbers style only)</td><td><code>?d5fg_page=2</code></td></tr></tbody></table>
+<p>Taxonomy names are shortened in the URL: <code>category</code> becomes <code>d5fg_cat</code> and <code>post_tag</code> becomes <code>d5fg_tag</code>. Page links are real links, so they keep working without JavaScript.</p>
+
+<h2 id="performance">Performance and caching</h2>
+<ul>
+<li>The first page of results is rendered in PHP, inside the page HTML. Search engines see the content and visitors never see an empty grid.</li>
+<li>The stylesheet and script (about 16&nbsp;KB together, no jQuery) load only on pages that use the module.</li>
+<li>Query results are cached for one hour, and the cache is cleared whenever content is published, updated or deleted.</li>
+<li>Caching plugins are supported: if a cached page carries an expired security token, the grid still loads its results.</li>
+</ul>
+
+<h2 id="accessibility">Accessibility</h2>
+<ul>
+<li>Filters are buttons with <code>aria-pressed</code>, usable with the keyboard.</li>
+<li>The number of results is announced to screen readers after each change.</li>
+<li>"Load more" moves the focus to the first new item. Each "Read more" link includes the item title for screen readers.</li>
+</ul>
+
+<h2 id="developers">For developers</h2>
+<h3 id="hooks">PHP hooks</h3>
+<table><thead><tr><th>Hook</th><th>Type</th><th>Arguments</th><th>Use</th></tr></thead><tbody><tr><td><code>d5fg_post_types</code></td><td>filter</td><td><code>array $types</code></td><td>Post types offered as a source (name =&gt; label).</td></tr><tr><td><code>d5fg_query_args</code></td><td>filter</td><td><code>array $args, array $settings, array $state</code></td><td>WP_Query arguments of every grid query.</td></tr><tr><td><code>d5fg_filter_terms</code></td><td>filter</td><td><code>WP_Term[] $terms, string $taxonomy, array $settings</code></td><td>Terms shown in a filter group.</td></tr><tr><td><code>d5fg_card_html</code></td><td>filter</td><td><code>string $html, WP_Post $post, array $settings</code></td><td>HTML of one card.</td></tr><tr><td><code>d5fg_cache_ttl</code></td><td>filter</td><td><code>int $seconds</code></td><td>How long query results are cached. Default: one hour.</td></tr><tr><td><code>d5fg_cache_enabled</code></td><td>filter</td><td><code>bool $enabled</code></td><td>Turns the result cache off when false.</td></tr></tbody></table>
+<p>Example: hide an internal post type from the Source list.</p>
+<pre><code>add_filter( 'd5fg_post_types', function ( $types ) {
+    unset( $types['my_internal_type'] );
+    return $types;
+} );</code></pre>
+<h3 id="events">JavaScript event</h3>
+<p>Each grid dispatches <code>d5fg:updated</code> after new results are shown. <code>event.detail</code> holds the current state (terms, search, page) and the total number of results.</p>
+<pre><code>document.addEventListener( 'd5fg:updated', function ( event ) {
+    console.log( event.detail.total + ' results' );
+} );</code></pre>
+<h3 id="rest">REST endpoint</h3>
+<p>Results are loaded from <code>/wp-json/d5fg/v1/query</code>. The module settings travel in a token signed by your site, so visitors cannot change the post type or read content that the grid does not show. Drafts, private and password-protected posts are never returned.</p>
+
+<h2 id="faq">FAQ</h2>
+<h3>Does it work with Divi 4?</h3>
+<p>No. The module is written for the Divi 5 API, which is why it does not need the Divi 4 compatibility mode.</p>
+<h3>Can I use it with WooCommerce products or custom post types?</h3>
+<p>Yes. Every public post type appears in the Source list, including products and post types created with a plugin or in code. Filters on product attributes and price are planned.</p>
+<h3>Can I filter by custom fields (ACF)?</h3>
+<p>Not in version 1.0: filters use taxonomies. Ordering by a custom field is supported (Order By &rarr; Custom field). Filters on ACF fields are planned.</p>
+<h3>Can I put several grids on one page?</h3>
+<p>Yes. Each grid works on its own. If two grids filter the same taxonomy, they share its URL parameter.</p>
+<h3>The grid shows "No results found" but I have content.</h3>
+<p>Check that the selected taxonomies belong to the chosen post type, that the items are published, and that they are not listed in <b>Exclude IDs</b>.</p>
+<h3>Is it translated?</h3>
+<p>The front-end texts are translation ready, with English and French included. The builder settings are in English.</p>
+
+<h2 id="changelog">Changelog</h2>
+<h3>1.0.0</h3>
+<p>First release.</p>
+
+<h2 id="support">Support</h2>
+<p>Open a ticket from the support tab of the product page on the Divi Marketplace. Your licence includes one year of support and updates for unlimited websites.</p>
+</article>
+</div>
+
+<footer><div class="wrap">Filter Grid for Divi 5 is made by <a href="https://samepk.fr">Samuel Atlani</a>. Divi is a registered trademark of Elegant Themes, Inc. This product is not affiliated with nor endorsed by Elegant Themes.</div></footer>
+</body>
+</html>

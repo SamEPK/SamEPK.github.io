@@ -1,0 +1,215 @@
+/* Filter Grid for Divi 5: base styles. Everything visual here can be overridden from the Divi design options. */
+
+.d5fg {
+	--d5fg-columns: 3;
+	--d5fg-gap: 30px;
+	--d5fg-accent: var(--gcid-primary-color, #2ea3f2);
+	--d5fg-border: rgba(0, 0, 0, 0.15);
+}
+
+.d5fg-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Toolbar */
+
+.d5fg-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 24px;
+	margin-bottom: 30px;
+}
+
+.d5fg-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.d5fg-filter,
+.d5fg-filter-select,
+.d5fg-search__input,
+.d5fg-page,
+.d5fg-load-more {
+	font: inherit;
+	line-height: 1.4;
+	color: inherit;
+	background-color: transparent;
+	border: 1px solid var(--d5fg-border);
+	border-radius: 3px;
+}
+
+.d5fg-filter,
+.d5fg-load-more {
+	padding: 8px 16px;
+	cursor: pointer;
+	transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.d5fg-filter:hover,
+.d5fg-load-more:hover {
+	border-color: var(--d5fg-accent);
+}
+
+.d5fg-filter.is-active {
+	color: #fff;
+	background-color: var(--d5fg-accent);
+	border-color: var(--d5fg-accent);
+}
+
+.d5fg-filter-select,
+.d5fg-search__input {
+	max-width: 100%;
+	padding: 8px 12px;
+}
+
+.d5fg-search {
+	margin: 0;
+}
+
+.d5fg-search__input {
+	width: 240px;
+}
+
+.d5fg :focus-visible {
+	outline: 2px solid var(--d5fg-accent);
+	outline-offset: 2px;
+}
+
+.d5fg-grid:focus {
+	outline: none;
+}
+
+/* Grid */
+
+.d5fg-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--d5fg-columns), minmax(0, 1fr));
+	gap: var(--d5fg-gap);
+	transition: opacity 0.2s;
+}
+
+.d5fg.is-loading .d5fg-grid {
+	opacity: 0.5;
+}
+
+.d5fg-empty {
+	grid-column: 1 / -1;
+	padding: 0;
+}
+
+/* Card */
+
+.d5fg-card {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.d5fg-card__image {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 16px;
+}
+
+.d5fg-card__image img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.d5fg-card__body {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.d5fg-card__title {
+	margin: 0;
+	padding-bottom: 8px;
+	overflow-wrap: anywhere;
+}
+
+.d5fg-card__title a,
+.d5fg-card__meta a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.d5fg-card__title a:hover,
+.d5fg-card__meta a:hover {
+	text-decoration: underline;
+}
+
+.d5fg-card__meta {
+	padding-bottom: 8px;
+	font-size: 0.875em;
+	opacity: 0.75;
+}
+
+.d5fg-card__excerpt {
+	padding-bottom: 12px;
+}
+
+.d5fg-card__excerpt p {
+	padding-bottom: 0;
+}
+
+.d5fg-card__more {
+	display: inline-block;
+	margin-top: auto;
+}
+
+/* Pagination */
+
+.d5fg-pagination {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 6px;
+	margin-top: 30px;
+}
+
+.d5fg-pagination:empty {
+	display: none;
+}
+
+.d5fg-page {
+	min-width: 2.4em;
+	padding: 6px 10px;
+	text-align: center;
+	text-decoration: none;
+}
+
+a.d5fg-page:hover {
+	border-color: var(--d5fg-accent);
+}
+
+.d5fg-page.is-current {
+	color: #fff;
+	background-color: var(--d5fg-accent);
+	border-color: var(--d5fg-accent);
+}
+
+.d5fg-page-gap {
+	padding: 0 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.d5fg-grid,
+	.d5fg-filter,
+	.d5fg-load-more {
+		transition: none;
+	}
+}

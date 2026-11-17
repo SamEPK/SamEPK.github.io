@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live demo: Filter Grid for Divi 5</title>
+<meta name="description" content="Try the Filter Grid for Divi 5 module: filters, live search and pagination on a portfolio.">
+<meta property="og:title" content="Live demo: Filter Grid for Divi 5">
+<meta property="og:description" content="Try the Filter Grid for Divi 5 module: filters, live search and pagination on a portfolio.">
+<meta property="og:image" content="https://samepk.fr/filter-grid/assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='4' y='5' width='6' height='3' rx='1.5' fill='%23ef476f'/%3E%3Crect x='11' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='18' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='4' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='4' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/d5fg.css">
+<style>
+.d5fg-demo .d5fg-filter,.d5fg-demo .d5fg-filter-select{background-color:#fff;font-weight:500;color:#2b2d42;border-radius:999px;border:1px solid #d9dce3}
+.d5fg-demo .d5fg-filter-select{border-radius:10px;padding:9px 14px}
+.d5fg-demo .d5fg-filter.is-active{background-color:#ef476f;color:#fff;border-color:#ef476f}
+.d5fg-demo .d5fg-search__input{background:#fff;border-radius:10px;padding:9px 14px}
+.d5fg-demo .d5fg-card{background-color:#fff;padding:0 0 24px;border-radius:16px;overflow:hidden;box-shadow:0 12px 32px -8px rgba(20,24,40,.12)}
+.d5fg-demo .d5fg-card__body{padding:4px 24px 0}
+.d5fg-demo .d5fg-card__title{font-weight:700;color:#14213d;font-size:22px;line-height:1.25}
+.d5fg-demo .d5fg-card__more{font-weight:600;color:#ef476f}
+.d5fg-demo .d5fg-card__title,.d5fg-demo .d5fg-card__meta,.d5fg-demo .d5fg-card__excerpt p{margin:0}
+.d5fg-demo .d5fg-card__title{margin-bottom:6px}
+.d5fg-demo .d5fg-card__meta{color:#6b7183}
+.d5fg-demo .d5fg-card__more,.d5fg-demo .d5fg-card__title a,.d5fg-demo .d5fg-card__meta a{text-decoration:none}
+.d5fg-demo .d5fg-card__more:hover{text-decoration:underline}
+.d5fg-demo .d5fg-load-more,.d5fg-demo .d5fg-page{background:#fff}
+.d5fg-demo .d5fg-grid{--d5fg-columns:3;--d5fg-gap:32px}
+@media (max-width:980px){.d5fg-demo .d5fg-grid{--d5fg-columns:2}}
+@media (max-width:767px){.d5fg-demo .d5fg-grid{--d5fg-columns:1}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="../"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='4' y='5' width='6' height='3' rx='1.5' fill='%23ef476f'/%3E%3Crect x='11' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='18' y='5' width='6' height='3' rx='1.5' fill='%23ffffff' opacity='.5'/%3E%3Crect x='4' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='11' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='4' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='11' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3Crect x='18' y='18' width='6' height='5' rx='1' fill='%23fff'/%3E%3C/svg%3E" alt="">Filter Grid for Divi 5</a><nav aria-label="Main"><a href="../">Overview</a><a href="../demo/" aria-current="page">Live demo</a><a href="../docs/">Documentation</a></nav></div></header>
+
+<main class="wrap">
+  <div class="demo-head"><h1>Live demo</h1><p class="lead" style="margin:0">A portfolio built with one Filter Grid module. Try the filters, the search and the pagination, then share the address: it keeps the filters.</p></div>
+  <div class="switches" id="switches"></div>
+  <div class="d5fg-demo demo-grid" id="demo-module"></div>
+  <p class="lead" style="margin-top:-48px;padding-bottom:64px;font-size:14px">This page runs the real front-end script and stylesheet of the plugin. On a WordPress site, results come from the WordPress REST API; here a small script answers in its place, with the same data format.</p>
+</main>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var layout = p.get('layout') || 'load_more', style = p.get('style') === 'dropdown' ? 'dropdown' : 'buttons', multi = style === 'buttons' && p.get('multi') === '1';
+  function href(change) {
+    var o = { layout: layout, style: style, multi: multi ? '1' : '' };
+    for (var k in change) o[k] = change[k];
+    if (o.style === 'dropdown') o.multi = '';
+    if (o.layout === 'load_more') o.layout = '';
+    if (o.style === 'buttons') o.style = '';
+    var q = Object.keys(o).filter(function (k) { return o[k]; }).map(function (k) { return k + '=' + o[k]; }).join('&');
+    return './' + (q ? '?' + q : '');
+  }
+  function group(label, key, opts, current) {
+    return '<div><b>' + label + '</b>' + opts.map(function (o) { return '<a href="' + href(Object.fromEntries([[key, o[0]]])) + '"' + (o[0] === current ? ' aria-current="true"' : '') + '>' + o[1] + '</a>'; }).join('') + '</div>';
+  }
+  var html = group('Pagination', 'layout', [['load_more', 'Load more'], ['numbers', 'Page numbers'], ['infinite', 'Infinite scroll']], layout) +
+    group('Filters', 'style', [['buttons', 'Buttons'], ['dropdown', 'Dropdown']], style);
+  if (style === 'buttons') html += group('Selection', 'multi', [['', 'Single'], ['1', 'Multiple']], multi ? '1' : '');
+  document.getElementById('switches').innerHTML = html;
+})();
+</script>
+<script src="../assets/demo-engine.js"></script>
+<script src="../assets/d5fg.js" defer></script>
+
+<footer><div class="wrap">Filter Grid for Divi 5 is made by <a href="https://samepk.fr">Samuel Atlani</a>. Divi is a registered trademark of Elegant Themes, Inc. This product is not affiliated with nor endorsed by Elegant Themes.</div></footer>
+</body>
+</html>
