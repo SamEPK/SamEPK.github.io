@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation: Quote Calculator for Divi 5</title>
+<meta name="description" content="A multi-step quote calculator built natively for Divi 5: live price estimate, conditional steps, requests by e-mail and in the admin, GDPR tools.">
+<meta property="og:title" content="Quote Calculator for Divi 5: multi-step quote and estimate module">
+<meta property="og:description" content="A multi-step quote calculator built natively for Divi 5: live price estimate, conditional steps, requests by e-mail and in the admin, GDPR tools.">
+<meta property="og:image" content="https://samepk.fr/quote-calculator/assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='5' y='5' width='18' height='2' rx='1' fill='%23ffffff' opacity='.35'/%3E%3Crect x='5' y='5' width='11' height='2' rx='1' fill='%23ef476f'/%3E%3Crect x='5' y='10' width='8' height='7' rx='1.5' fill='%23fff'/%3E%3Crect x='15' y='10' width='8' height='7' rx='1.5' fill='%23fff' opacity='.5'/%3E%3Crect x='5' y='20' width='18' height='3' rx='1' fill='%23ef476f'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/site.css">
+
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="brand" href="../"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='6' fill='%2314182f'/%3E%3Crect x='5' y='5' width='18' height='2' rx='1' fill='%23ffffff' opacity='.35'/%3E%3Crect x='5' y='5' width='11' height='2' rx='1' fill='%23ef476f'/%3E%3Crect x='5' y='10' width='8' height='7' rx='1.5' fill='%23fff'/%3E%3Crect x='15' y='10' width='8' height='7' rx='1.5' fill='%23fff' opacity='.5'/%3E%3Crect x='5' y='20' width='18' height='3' rx='1' fill='%23ef476f'/%3E%3C/svg%3E" alt="">Quote Calculator for Divi 5</a><nav aria-label="Main"><a href="../">Overview</a><a href="../demo/">Live demo</a><a href="../docs/" aria-current="page">Documentation</a></nav></div></header>
+
+<div class="wrap docs">
+<nav class="toc" aria-label="On this page">
+  <a href="#requirements">Requirements</a><a href="#install">Installation</a><a href="#forms">Create a quote form</a><a class="sub" href="#forms-settings">Price and display</a><a class="sub" href="#forms-requests">Requests and e-mails</a><a class="sub" href="#forms-steps">Steps and questions</a><a class="sub" href="#forms-prices">Prices</a><a class="sub" href="#forms-conditions">Conditions</a><a href="#module">Add the module</a><a href="#design">Design settings</a><a href="#requests">Quote requests</a><a href="#privacy">Privacy (GDPR)</a><a href="#security">Security</a><a href="#accessibility">Accessibility</a><a href="#developers">For developers</a><a href="#faq">FAQ</a><a href="#changelog">Changelog</a><a href="#support">Support</a>
+</nav>
+<article class="doc">
+<h1>Documentation</h1>
+<p>Quote Calculator for Divi 5 adds quote forms to WordPress and a Quote Calculator module to the Divi 5 builder. Visitors answer a few steps, see an estimate, and send their contact details; you receive the request by e-mail and in the admin. This guide covers installation, every setting and the hooks available to developers.</p>
+
+<h2 id="requirements">Requirements</h2>
+<table><thead><tr><th>Software</th><th>Version</th></tr></thead><tbody><tr><td>WordPress</td><td>6.5 or later (tested up to 7.1)</td></tr><tr><td>Divi</td><td>Divi 5, theme or Divi Builder plugin</td></tr><tr><td>PHP</td><td>7.4 or later</td></tr></tbody></table>
+
+<h2 id="install">Installation</h2>
+<ol><li>In WordPress, go to <strong>Plugins &gt; Add New &gt; Upload Plugin</strong> and upload <code>d5-quote-calculator.zip</code>.</li><li>Activate the plugin. A <strong>Quotes</strong> menu appears, with an example form, &quot;Bathroom renovation&quot;.</li><li>Edit the example or create your own form, then add the module to a page (see <a href="#module">Add the module</a>).</li></ol>
+<p>The example form is created once. To skip it, add <code>add_filter( 'd5qc_import_sample', '__return_false' );</code> before activating the plugin, or simply delete it.</p>
+
+<h2 id="forms">Create a quote form</h2>
+<p>Go to <strong>Quotes &gt; Add form</strong>. Give the form a title, then build it in the <strong>Quote form</strong> box: settings at the top, then the steps. Changes are saved with the <strong>Publish</strong> or <strong>Update</strong> button. If something prevents the form from working, the page lists it after saving, and the form is not shown to visitors until it is fixed.</p>
+
+<h3 id="forms-settings">Price and display</h3>
+<table><thead><tr><th>Setting</th><th>What it does</th><th>Default</th></tr></thead><tbody><tr><td>Base price (excl. VAT)</td><td>Added to every estimate: travel, site protection, minimum charge…</td><td>0</td></tr><tr><td>VAT rate (%)</td><td>Used to compute the amount including VAT.</td><td>20</td></tr><tr><td>Show prices</td><td>Including VAT, excluding VAT, or both.</td><td>Including VAT</td></tr><tr><td>Range (± %)</td><td>0 shows an exact amount. 10 shows &quot;900 € to 1 100 €&quot; around the computed total.</td><td>0</td></tr><tr><td>When to show the estimate</td><td>Live, as the visitor answers, or only after the request is sent.</td><td>Live</td></tr><tr><td>Currency</td><td>Symbol or code shown with amounts.</td><td>€</td></tr><tr><td>Currency position</td><td>After (1 234,50 €) or before (€1 234,50) the amount.</td><td>After</td></tr><tr><td>Decimals</td><td>Cents, or whole amounts.</td><td>Cents</td></tr></tbody></table>
+<p>Amounts use the French format: a space between thousands and a comma before cents.</p>
+
+<h3 id="forms-requests">Requests and e-mails</h3>
+<table><thead><tr><th>Setting</th><th>What it does</th><th>Default</th></tr></thead><tbody><tr><td>Send requests to</td><td>E-mail address that receives the requests of this form.</td><td>The site e-mail address</td></tr><tr><td>Keep requests for (days)</td><td>Requests are deleted automatically after this period. 0 keeps them.</td><td>365</td></tr><tr><td>Send an acknowledgement to the visitor</td><td>E-mails the visitor a summary of their request.</td><td>On</td></tr><tr><td>Message after sending</td><td>Shown to the visitor once the request is sent.</td><td>A default message</td></tr></tbody></table>
+
+<h3 id="forms-steps">Steps and questions</h3>
+<p>A form has up to 10 steps, each with a title, an optional description and up to 20 questions. Visitors see one step at a time, with a progress bar and Previous / Next buttons. Each question has a label, an optional help text and an &quot;Answer required&quot; switch.</p>
+<table><thead><tr><th>Question type</th><th>Shown to visitors</th><th>Settings</th></tr></thead><tbody><tr><td>Single choice</td><td>Clickable cards, one can be selected.</td><td>Up to 30 answers, each with a price, an optional icon (emoji) or image.</td></tr><tr><td>Multiple choice</td><td>The same cards, several can be selected.</td><td>Same as single choice.</td></tr><tr><td>Quantity</td><td>A number field with a unit, for example m².</td><td>Minimum, maximum, step (1, or 0.5 for halves), default value, unit.</td></tr><tr><td>Short text</td><td>A one-line text field.</td><td>Placeholder.</td></tr><tr><td>Contact details</td><td>Name, e-mail, phone, postcode and message fields.</td><td>Each field can be shown or hidden, and required or optional. The e-mail is always required.</td></tr></tbody></table>
+<p>Every form needs one &quot;Contact details&quot; question, usually in the last step: it collects the e-mail address of the request. The consent box and the send button appear on the last step.</p>
+
+<h3 id="forms-prices">Prices</h3>
+<p>Each answer of a choice question has a price, always entered before tax:</p>
+<table><thead><tr><th>Price</th><th>Example</th><th>Added to the estimate</th></tr></thead><tbody><tr><td>No price</td><td>Timing: &quot;Within 3 months&quot;</td><td>Nothing.</td></tr><tr><td>Fixed amount</td><td>&quot;Walk-in shower&quot;, 1 900 €</td><td>The amount. A negative amount is a discount.</td></tr><tr><td>Unit price × quantity</td><td>&quot;Premium finish&quot;, 75 € multiplied by &quot;Bathroom area&quot;</td><td>The unit price times the value of the chosen quantity question.</td></tr></tbody></table>
+<p>The estimate is the base price plus the prices of the selected answers, then VAT. Answers of hidden questions do not count. The price shown in the browser is indicative: when a request arrives, the server checks every answer and computes the total again from the form settings, and that total is the one stored and e-mailed.</p>
+
+<h3 id="forms-conditions">Conditions</h3>
+<p>Any step after the first, and any question, can have a <strong>Show only if</strong> condition: pick an earlier single or multiple choice question, then the answers that show the item. In the example form, the &quot;Equipment&quot; step only appears for a full or partial renovation. Hidden questions are never required, and the progress bar counts only the steps the visitor will see.</p>
+
+<h2 id="module">Add the module</h2>
+<ol><li>Open a page in the Divi 5 Visual Builder.</li><li>Add a module and choose <strong>Quote Calculator</strong>.</li><li>In <strong>Content &gt; Quote Form</strong>, choose the form. Turn on <strong>Show Form Title</strong> to display its title above it.</li></ol>
+<p>The builder shows a preview of the first step. The module also works in Divi Theme Builder layouts.</p>
+
+<h2 id="design">Design settings</h2>
+<table><thead><tr><th>Group</th><th>What you can style</th></tr></thead><tbody><tr><td>Progress Bar</td><td>Colours of the track and of the bar, border of the track; the &quot;Step 1 of 4&quot; text has its own text group.</td></tr><tr><td>Step Title / Step Description</td><td>Text of the step titles and descriptions.</td></tr><tr><td>Question Label</td><td>Text of the question labels and of the contact field labels.</td></tr><tr><td>Options</td><td>Text, background, border, spacing and shadow of the answer cards.</td></tr><tr><td>Selected Option</td><td>Text, background, border and shadow of the selected cards.</td></tr><tr><td>Option Price</td><td>Text of the price shown on each card.</td></tr><tr><td>Fields</td><td>Text, background, border and spacing of the number, text and contact fields.</td></tr><tr><td>Buttons / Previous Button</td><td>Text, background, border and spacing of the buttons; the Previous button has its own group.</td></tr><tr><td>Estimate / Estimate Amount</td><td>Box of the estimate, and the amount itself.</td></tr><tr><td>Error</td><td>Text of the error messages.</td></tr><tr><td>Confirmation</td><td>Box shown after the request is sent.</td></tr></tbody></table>
+<p>The Advanced tab has the standard Divi options and custom CSS fields for the progress bar, step, step title, question, option, field, estimate, button and confirmation.</p>
+
+<h2 id="requests">Quote requests</h2>
+<p>Requests are listed under <strong>Quotes &gt; Quote requests</strong>, with the name, e-mail, phone and estimate. Open one to see the answers, the contact details, the estimate, the form, the date of consent and the date of automatic deletion. Requests cannot be edited; delete them with <strong>Move to Trash</strong>.</p>
+<p>The professional e-mail is sent to the address set in the form, with the answers, the contact details, the estimate and a link to the request; its Reply-To is the visitor, so replying answers them. E-mails are sent with <code>wp_mail()</code>: if your site uses an SMTP plugin, they go through it.</p>
+
+<h2 id="privacy">Privacy (GDPR)</h2>
+<ul><li><strong>Consent</strong>: visitors must tick a consent box to send a request. It links to the privacy policy page set in <strong>Settings &gt; Privacy</strong>. The date of consent is stored with the request.</li><li><strong>Retention</strong>: each form sets how long its requests are kept. A daily task deletes expired requests.</li><li><strong>Export and erasure</strong>: requests are included in <strong>Tools &gt; Export Personal Data</strong> and <strong>Tools &gt; Erase Personal Data</strong>, found by the e-mail address.</li><li><strong>Policy text</strong>: a suggested paragraph appears in <strong>Settings &gt; Privacy &gt; Policy Guide</strong>.</li><li>No external service, no tracking, no cookie. IP addresses are only used, hashed, to limit the number of requests.</li></ul>
+
+<h2 id="security">Security</h2>
+<p>Requests are sent to a REST endpoint and pass several checks before anything is saved: a token signed with a secret of your site, a hidden field that only bots fill in, a minimum time between display and sending, and a limit of five requests per IP address every ten minutes. Every answer must be one the form offers; numbers must respect their bounds and step; contact details are validated. The browser never sends prices.</p>
+
+<h2 id="accessibility">Accessibility</h2>
+<ul><li>Answer cards are real radio buttons and checkboxes: Tab reaches them, arrow keys and Space select them.</li><li>When a step changes, focus moves to its title.</li><li>Errors are written next to their field, linked to it, and announced by screen readers.</li><li>The progress bar exposes the current step to assistive technologies; the estimate is announced when it changes.</li><li>Motion is reduced for visitors who ask their system for it.</li></ul>
+
+<h2 id="developers">For developers</h2>
+<h3 id="hooks">PHP hooks</h3>
+<table><thead><tr><th>Hook</th><th>Type</th><th>Arguments</th><th>Use</th></tr></thead><tbody><tr><td><code>d5qc_import_sample</code></td><td>filter</td><td><code>bool $import</code></td><td>Whether the example form is created on activation.</td></tr><tr><td><code>d5qc_rate_limit</code></td><td>filter</td><td><code>int $limit</code></td><td>Maximum number of requests per IP address in 10 minutes. Default 5.</td></tr><tr><td><code>d5qc_request_received</code></td><td>action</td><td><code>int $lead_id, int $form_id, array $estimate</code></td><td>Fires after a request is saved and e-mailed. Amounts are in cents.</td></tr></tbody></table>
+<pre><code>add_action( 'd5qc_request_received', function ( $lead_id, $form_id, $estimate ) {
+	// Send the request to a CRM, for example.
+}, 10, 3 );</code></pre>
+<h3 id="events">JavaScript</h3>
+<p>The <code>d5qc:sent</code> event fires on the module after a request is sent. <code>window.d5qc.init()</code> starts quote forms added to the page later.</p>
+<h3 id="rest">REST endpoint</h3>
+<p><code>POST /wp-json/d5qc/v1/submit</code> receives the form ID, the signed token, the answers and the consent. It answers with a confirmation message and the estimate, or with the errors of each field.</p>
+
+<h2 id="faq">FAQ</h2>
+<h3>Does it work with Divi 4?</h3>
+<p>No. The module only exists for Divi 5.</p>
+<h3>Is the estimate a binding price?</h3>
+<p>No. It is shown as indicative on the page and in the e-mails. You confirm the final price in your own quote.</p>
+<h3>Can I compute a price per square metre?</h3>
+<p>Yes: add a Quantity question (for example the area in m²), then give an answer the price type &quot;Unit price × quantity&quot; and choose that question.</p>
+<h3>Why is my form not shown?</h3>
+<p>A form needs at least one step and a &quot;Contact details&quot; question, and it must be published. The form edit screen lists what is missing; logged-in editors also see the reason on the page.</p>
+<h3>Can I use it in several languages?</h3>
+<p>The texts of the plugin are translation ready, with English and French included. The questions and answers are your own content: write them in the language of your site.</p>
+<h3>The e-mails do not arrive.</h3>
+<p>The plugin uses the standard WordPress mail function. If your host does not deliver e-mails reliably, install an SMTP plugin; requests are always saved in the admin anyway.</p>
+
+<h2 id="changelog">Changelog</h2>
+<h3>1.0.0</h3>
+<p>First release.</p>
+
+<h2 id="support">Support</h2>
+<p>Open a ticket from the support tab of the product page on the Divi Marketplace. Your licence includes one year of support and updates for unlimited websites.</p>
+</article>
+</div>
+
+<footer><div class="wrap">Quote Calculator for Divi 5 is made by <a href="https://samepk.fr">Samuel Atlani</a>. Divi is a registered trademark of Elegant Themes, Inc. This product is not affiliated with nor endorsed by Elegant Themes.</div></footer>
+</body>
+</html>
