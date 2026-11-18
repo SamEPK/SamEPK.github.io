@@ -1,0 +1,396 @@
+/* Quote Calculator for Divi 5: base styles. Everything visual here can be overridden from the Divi design options. */
+
+.d5qc {
+	--d5qc-accent: var(--gcid-primary-color, #2ea3f2);
+	--d5qc-border: rgba(0, 0, 0, 0.15);
+	--d5qc-error: #b32d2e;
+	--d5qc-radius: 6px;
+}
+
+.d5qc-title {
+	padding-bottom: 16px;
+}
+
+.d5qc-form[hidden],
+.d5qc [hidden] {
+	display: none !important;
+}
+
+/* Progress */
+
+.d5qc-progress {
+	margin-bottom: 24px;
+}
+
+.d5qc-progress__track {
+	--d5qc-progress: 0;
+	height: 6px;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.08);
+	border-radius: 3px;
+}
+
+.d5qc-progress__bar {
+	width: 100%;
+	height: 100%;
+	background-color: var(--d5qc-accent);
+	transform: scaleX(var(--d5qc-progress));
+	transform-origin: left center;
+	transition: transform 0.3s ease;
+}
+
+.d5qc-progress__text {
+	margin: 8px 0 0;
+	padding: 0;
+	font-size: 0.875em;
+	opacity: 0.75;
+}
+
+/* Steps and questions */
+
+.d5qc-step__title {
+	margin: 0;
+	padding-bottom: 8px;
+}
+
+.d5qc-step__title:focus {
+	outline: none;
+}
+
+.d5qc-step__description {
+	margin: 0 0 16px;
+	padding: 0;
+}
+
+.d5qc-question {
+	min-width: 0;
+	margin: 0 0 24px;
+	padding: 0;
+	border: 0;
+}
+
+.d5qc-label {
+	display: block;
+	margin-bottom: 8px;
+	padding: 0;
+	font-weight: 600;
+}
+
+.d5qc-help {
+	margin: -4px 0 8px;
+	padding: 0;
+	font-size: 0.875em;
+	opacity: 0.75;
+}
+
+.d5qc-required {
+	color: var(--d5qc-error);
+}
+
+/* Choice cards */
+
+.d5qc-options {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 12px;
+}
+
+.d5qc-option {
+	position: relative;
+	display: flex;
+	cursor: pointer;
+}
+
+/* The native input stays in place for keyboards and screen readers, but invisible. */
+.d5qc-option__input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.d5qc-option__card {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	padding: 16px 12px;
+	text-align: center;
+	background-color: #fff;
+	border: 2px solid var(--d5qc-border);
+	border-radius: var(--d5qc-radius);
+	transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.d5qc-option:hover .d5qc-option__card {
+	border-color: var(--d5qc-accent);
+}
+
+.d5qc-option__input:checked + .d5qc-option__card {
+	background-color: rgba(46, 163, 242, 0.08);
+	border-color: var(--d5qc-accent);
+	box-shadow: 0 0 0 1px var(--d5qc-accent);
+}
+
+.d5qc-option__input:focus-visible + .d5qc-option__card {
+	outline: 2px solid var(--d5qc-accent);
+	outline-offset: 2px;
+}
+
+.d5qc-option__image {
+	display: block;
+	width: 100%;
+	max-width: 120px;
+	height: auto;
+	border-radius: 4px;
+}
+
+.d5qc-option__icon {
+	font-size: 2em;
+	line-height: 1;
+}
+
+.d5qc-option__label {
+	font-weight: 600;
+}
+
+.d5qc-option__price {
+	font-size: 0.875em;
+	opacity: 0.75;
+}
+
+/* Fields */
+
+/* Doubled class: themes style input[type="text"] with a higher specificity than one class. */
+.d5qc .d5qc-input {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
+	padding: 10px 12px;
+	font: inherit;
+	line-height: 1.4;
+	color: inherit;
+	background-color: #fff;
+	border: 1px solid var(--d5qc-border);
+	border-radius: var(--d5qc-radius);
+}
+
+.d5qc-quantity {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.d5qc .d5qc-input--quantity {
+	width: 9em;
+}
+
+.d5qc-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.d5qc-field--message {
+	grid-column: 1 / -1;
+}
+
+.d5qc-field__label {
+	display: block;
+	margin-bottom: 4px;
+}
+
+.has-error > .d5qc-input,
+.has-error .d5qc-input[aria-invalid="true"] {
+	border-color: var(--d5qc-error);
+}
+
+.d5qc-error {
+	margin: 6px 0 0;
+	padding: 0;
+	font-size: 0.875em;
+	color: var(--d5qc-error);
+}
+
+.d5qc-alert {
+	margin-bottom: 16px;
+	font-weight: 600;
+	color: var(--d5qc-error);
+}
+
+.d5qc-alert:empty {
+	display: none;
+}
+
+.d5qc-alert.is-status {
+	font-weight: normal;
+	color: inherit;
+}
+
+/* Consent */
+
+.d5qc-consent {
+	margin: 0 0 24px;
+}
+
+.d5qc-check {
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.d5qc-check input {
+	flex: none;
+	margin-top: 0.3em;
+	accent-color: var(--d5qc-accent);
+}
+
+/* Bots fill every field; people never see this one. */
+.d5qc-hp {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* Estimate */
+
+.d5qc-total {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 4px 12px;
+	margin: 0 0 24px;
+	padding: 16px 20px;
+	background-color: rgba(0, 0, 0, 0.04);
+	border-radius: var(--d5qc-radius);
+}
+
+.d5qc-total__label {
+	font-weight: 600;
+}
+
+.d5qc-total__amount {
+	font-size: 1.4em;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+.d5qc-total__amount.is-updated {
+	animation: d5qc-pulse 0.4s ease;
+}
+
+.d5qc-total__note {
+	flex-basis: 100%;
+	font-size: 0.8em;
+	opacity: 0.7;
+}
+
+@keyframes d5qc-pulse {
+	from {
+		opacity: 0.4;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Navigation */
+
+.d5qc-nav {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.d5qc-button {
+	padding: 12px 24px;
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.2;
+	color: #fff;
+	background-color: var(--d5qc-accent);
+	border: 2px solid var(--d5qc-accent);
+	border-radius: var(--d5qc-radius);
+	cursor: pointer;
+	transition: opacity 0.2s;
+}
+
+.d5qc-button:hover {
+	opacity: 0.9;
+}
+
+.d5qc-button:disabled {
+	opacity: 0.6;
+	cursor: wait;
+}
+
+.d5qc-button--next,
+.d5qc-button--submit {
+	margin-left: auto;
+}
+
+.d5qc-button--prev {
+	color: var(--d5qc-accent);
+	background-color: transparent;
+}
+
+.d5qc :focus-visible {
+	outline: 2px solid var(--d5qc-accent);
+	outline-offset: 2px;
+}
+
+/* Success */
+
+.d5qc-success {
+	padding: 24px;
+	background-color: rgba(0, 0, 0, 0.04);
+	border-radius: var(--d5qc-radius);
+}
+
+.d5qc-success:focus {
+	outline: none;
+}
+
+.d5qc-success__estimate {
+	font-weight: 700;
+}
+
+.d5qc-notice {
+	padding: 12px 16px;
+	border: 1px dashed var(--d5qc-border);
+}
+
+@media (max-width: 600px) {
+	.d5qc-options {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.d5qc-fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.d5qc-button {
+		flex: 1 1 auto;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.d5qc-progress__bar,
+	.d5qc-option__card {
+		transition: none;
+	}
+
+	.d5qc-total__amount.is-updated {
+		animation: none;
+	}
+}
