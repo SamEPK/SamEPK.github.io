@@ -72,3 +72,4 @@ ol.steps li{margin-bottom:8px}
 .demo-grid{padding-bottom:80px}
 @media (max-width:900px){.hero .wrap,.docs{grid-template-columns:1fr}.toc{position:static}.features,.req{grid-template-columns:1fr 1fr}.shots{grid-template-columns:1fr}article.doc{padding:24px}}
 @media (max-width:600px){.features,.req{grid-template-columns:1fr}.hero{padding:48px 0}.top nav{margin-left:0}}
+@media (max-width:900px){.docs{grid-template-columns:minmax(0,1fr)}.toc a{overflow-wrap:anywhere}}
