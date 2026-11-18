@@ -38,7 +38,7 @@
 <p>Amounts use the French format: a space between thousands and a comma before cents.</p>
 
 <h3 id="forms-requests">Requests and e-mails</h3>
-<table><thead><tr><th>Setting</th><th>What it does</th><th>Default</th></tr></thead><tbody><tr><td>Send requests to</td><td>E-mail address that receives the requests of this form.</td><td>The site e-mail address</td></tr><tr><td>Keep requests for (days)</td><td>Requests are deleted automatically after this period. 0 keeps them.</td><td>365</td></tr><tr><td>Send an acknowledgement to the visitor</td><td>E-mails the visitor a summary of their request.</td><td>On</td></tr><tr><td>Message after sending</td><td>Shown to the visitor once the request is sent.</td><td>A default message</td></tr></tbody></table>
+<table><thead><tr><th>Setting</th><th>What it does</th><th>Default</th></tr></thead><tbody><tr><td>Send requests to</td><td>E-mail address that receives the requests of this form.</td><td>The site e-mail address</td></tr><tr><td>Keep requests for (days)</td><td>Requests are deleted automatically after this period. 0 keeps them.</td><td>365</td></tr><tr><td>Send an acknowledgement to the visitor</td><td>E-mails the visitor a summary of their choices: the form title, the chosen answers, the quantities and the estimate. It never includes text typed by the visitor, so the form cannot be used to send messages to strangers.</td><td>Off</td></tr><tr><td>Message after sending</td><td>Shown to the visitor once the request is sent.</td><td>A default message</td></tr></tbody></table>
 
 <h3 id="forms-steps">Steps and questions</h3>
 <p>A form has up to 10 steps, each with a title, an optional description and up to 20 questions. Visitors see one step at a time, with a progress bar and Previous / Next buttons. Each question has a label, an optional help text and an &quot;Answer required&quot; switch.</p>
@@ -63,7 +63,7 @@
 
 <h2 id="requests">Quote requests</h2>
 <p>Requests are listed under <strong>Quotes &gt; Quote requests</strong>, with the name, e-mail, phone and estimate. Open one to see the answers, the contact details, the estimate, the form, the date of consent and the date of automatic deletion. Requests cannot be edited; delete them with <strong>Move to Trash</strong>.</p>
-<p>The professional e-mail is sent to the address set in the form, with the answers, the contact details, the estimate and a link to the request; its Reply-To is the visitor, so replying answers them. E-mails are sent with <code>wp_mail()</code>: if your site uses an SMTP plugin, they go through it.</p>
+<p>The professional e-mail is sent to the address set in the form, with the answers, the contact details, the estimate and a link to the request; its Reply-To is the visitor, so replying answers them. When the acknowledgement is on, the visitor receives the form title, their chosen answers, the quantities and the estimate, but none of the text they typed. E-mails are sent with <code>wp_mail()</code>: if your site uses an SMTP plugin, they go through it.</p>
 
 <h2 id="privacy">Privacy (GDPR)</h2>
 <ul><li><strong>Consent</strong>: visitors must tick a consent box to send a request. It links to the privacy policy page set in <strong>Settings &gt; Privacy</strong>. The date of consent is stored with the request.</li><li><strong>Retention</strong>: each form sets how long its requests are kept. A daily task deletes expired requests.</li><li><strong>Export and erasure</strong>: requests are included in <strong>Tools &gt; Export Personal Data</strong> and <strong>Tools &gt; Erase Personal Data</strong>, found by the e-mail address.</li><li><strong>Policy text</strong>: a suggested paragraph appears in <strong>Settings &gt; Privacy &gt; Policy Guide</strong>.</li><li>No external service, no tracking, no cookie. IP addresses are only used, hashed, to limit the number of requests.</li></ul>
@@ -100,6 +100,8 @@
 <p>The plugin uses the standard WordPress mail function. If your host does not deliver e-mails reliably, install an SMTP plugin; requests are always saved in the admin anyway.</p>
 
 <h2 id="changelog">Changelog</h2>
+<h3>1.0.1</h3>
+<ul><li>Security: the acknowledgement e-mailed to the visitor no longer contains anything the visitor typed (name, message, short text answers), so it cannot be used to relay spam to an address typed in the form. It lists the form title, the chosen answers, the quantities and the estimate.</li><li>The acknowledgement is now off by default, for new forms and for the example form.</li></ul>
 <h3>1.0.0</h3>
 <p>First release.</p>
 
